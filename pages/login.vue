@@ -67,8 +67,9 @@ export default {
     }
   },
   mounted () {
-    // Before loading login page, obtain csrf cookie from the server.
-    this.$axios.$get('/sanctum/csrf-cookie')
+    if (this.$auth.loggedIn) {
+      this.$router.push('/')
+    }
   },
   methods: {
     async login () {
@@ -80,6 +81,7 @@ export default {
           }
         })
         /* eslint-disable no-console */
+        console.log(this.$auth.loggedIn)
         this.$router.push('/')
       } catch (e) {
         console.log(e)

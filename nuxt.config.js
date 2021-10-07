@@ -57,24 +57,22 @@ export default {
   auth: {
     strategies: {
       local: {
+        token: {
+          property: 'data',
+          required: true,
+          type: 'Bearer'
+        },
+        user: {
+          property: false, // here should be `false`, as you defined in user endpoint `propertyName`
+          autoFetch: true
+        },
         endpoints: {
           login: { url: '/api/auth/login', method: 'post', propertyName: 'data' },
+          logout: { url: '/api/auth/logout', method: 'get', propertyName: false },
           user: { url: '/api/auth/user', method: 'get', propertyName: false }
-        },
-        tokenRequired: false,
-        tokenType: false
-      },
-      laravelSanctum: {
-        provider: 'laravel/sanctum',
-        url: 'http://91.226.116.39',
-        endpoints: {
-          login: { url: '/api/auth/login', method: 'post' }
-        },
-        tokenRequired: false,
-        tokenType: false
+        }
       }
     },
-    localStorage: false,
     redirect: {
       login: '/login',
       logout: '/',
@@ -82,24 +80,6 @@ export default {
       home: '/'
     }
   },
-  // strategies: {
-  //   local: {
-  //     endpoints: {
-  //       login: { url: 'http://91.226.116.39/api/auth/login', method: 'post', propertyName: 'token' }
-  //     }
-  //   },
-  //   laravelSanctum: {
-  //     provider: 'laravel/sanctum',
-  //     url: 'http://91.226.116.39',
-  //     endpoints: {
-  //       login: {
-  //         url: '/api/auth/login',
-  //         withCredentials: true,
-  //         method: 'post'
-  //       }
-  //     }
-  //   }
-  // },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
