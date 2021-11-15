@@ -21,13 +21,25 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
-  // Global CSS: https://go.nuxtjs.dev/config-css
+  /*
+   ** Global CSS
+   */
   css: [
+    '@/assets/css/main.css'
   ],
-
+  /*
+   ** Customize the progress-bar color
+   */
+  loading: {
+    color: '#fff'
+  },
+  router: {
+    linkActiveClass: 'active-link',
+    linkExactActiveClass: 'exact-active-link'
+  },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/globalComponents'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -47,6 +59,10 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth'
   ],
+
+  bootstrapVue: {
+    icons: true
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -83,5 +99,8 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: [
+      'vee-validate/dist/rules'
+    ]
   }
 }

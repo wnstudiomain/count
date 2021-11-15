@@ -1,12 +1,10 @@
 <template>
-  <div class="container">
+  <div class="container-fluid main">
     <div v-if="error">
       {{ error }}
     </div>
     <ul v-else>
-      <li v-for="shield in shields" :key="restaurant.id">
-        {{ shield.title }}
-      </li>
+      <LeftNavbar :shields="shields" />
     </ul>
   </div>
 </template>
@@ -14,9 +12,13 @@
 <script>
 
 import { mapGetters } from 'vuex'
+import LeftNavbar from '~/components/LeftNavbarShields'
 
 export default {
-  name: 'App',
+  components: {
+    LeftNavbar
+  },
+  layout: 'content',
   middleware: 'auth',
   data () {
     return {

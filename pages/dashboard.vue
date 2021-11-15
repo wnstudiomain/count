@@ -1,12 +1,12 @@
 <template>
   <div>
-    <nuxt />
+    <p>DESCRIPTION: {{ $route.name }}</p>
   </div>
 </template>
 
 <script>
 
 export default {
-  middleware: 'auth'
+  layout: 'content'
 }
 </script>
