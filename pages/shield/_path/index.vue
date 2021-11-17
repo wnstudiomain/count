@@ -1,6 +1,6 @@
 <template>
   <div class="main container-fluid d-flex">
-    <LeftNavbarShields :shields="shields" />
+    <LeftNavbarShields :shields="elist" />
     <div class="shield-wrapper">
       <p>ID: {{ shield.id }}</p>
       <p>NAME: {{ shield.name }}</p>
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import LeftNavbarShields from '~/components/LeftNavbarShields'
 
 export default {
@@ -24,18 +25,17 @@ export default {
       error: null
     }
   },
+  computed: {
+    ...mapGetters({
+      elist: 'elist/elist'
+    })
+  // Другие вычисляемые свойства
+  },
   async mounted () {
     try {
       const response = await this.$axios.$get('/api/electroshields/' + this.$route.params.id)
       console.log(response)
       this.shield = response.data
-    } catch (error) {
-      this.error = error
-    }
-    try {
-      const response = await this.$axios.$get('/api/electroshields')
-      console.log(response)
-      this.shields = response.data
     } catch (error) {
       this.error = error
     }

@@ -7,9 +7,7 @@
     @click.prevent="collapseMenu"
   >
     <span v-if="link.onlyIcon">
-      <el-tooltip :content="link.name" placement="bottom" effect="light">
-        <i :class="link.icon" />
-      </el-tooltip>
+      <i :class="link.icon" />
     </span>
     <span v-else>
       <i v-if="link.icon" :class="link.icon" /> {{ link.name }}
