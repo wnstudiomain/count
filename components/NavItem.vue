@@ -7,7 +7,7 @@
     @click.prevent="collapseMenu"
   >
     <span v-if="link.onlyIcon">
-      <i :class="link.icon" />
+        <i :class="link.icon" />
     </span>
     <span v-else>
       <i v-if="link.icon" :class="link.icon" /> {{ link.name }}

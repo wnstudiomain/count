@@ -1,6 +1,6 @@
 <template>
   <div class="main container-fluid d-flex">
-    <LeftNavbarShields :shields="elist" />
+    <LeftNavbarShields :shields="mapElist" />
     <div class="shield-wrapper">
       <p>ID: {{ shield.id }}</p>
       <p>NAME: {{ shield.name }}</p>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import LeftNavbarShields from '~/components/LeftNavbarShields'
 
 export default {
@@ -20,25 +20,24 @@ export default {
   layout: 'content',
   data () {
     return {
-      shield: [],
-      shields: [],
-      error: null
+      mapDataLoaded: false,
+      shield: []
     }
   },
   computed: {
     ...mapGetters({
-      elist: 'elist/elist'
+      mapElist: 'elist/elist',
+      mapShield: 'enum/enum'
     })
-  // Другие вычисляемые свойства
   },
   async mounted () {
-    try {
-      const response = await this.$axios.$get('/api/electroshields/' + this.$route.params.id)
-      console.log(response)
-      this.shield = response.data
-    } catch (error) {
-      this.error = error
-    }
+    await this.fetchEnum(this.$route.params.id)
+    this.shield = await this.mapShield
+  },
+  methods: {
+    ...mapActions({
+      fetchEnum: 'enum/fetchEnum'
+    })
   }
 }
 </script>
