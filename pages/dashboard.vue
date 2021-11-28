@@ -29,7 +29,8 @@
           <b-col
             v-for="shield in elist"
             :key="shield.id"
-            xl="3"
+            xl="4"
+            lg="4"
             class="d-flex align-items-center shield-item"
           >
             <div class="shield-item__wrapper">
@@ -46,7 +47,38 @@
               <div class="shield-item__detail">
                 <span>Счетчик № {{ shield.meter_serial_number }}</span>
               </div>
-              <div class=""></div>
+              <div class="shield-item__table">
+                <div class="table-header">
+                  <div> </div>
+                  <div>U(В)</div>
+                  <div>I(А)</div>
+                  <div>P(Вт)</div>
+                  <div>Q(Вар)</div>
+                </div>
+                <div class="table-body">
+                  <div>
+                    <div>A</div>
+                    <div>{{ shield.telemetry_current[0].meter.measurements[0].parameters.voltage_volts1[1].value }}</div>
+                    <div>{{ shield.telemetry_current[0].meter.measurements[0].parameters.current_amperes1[1].value }}</div>
+                    <div>{{ shield.telemetry_current[0].meter.measurements[0].parameters.active_power_watts1[1].value }}</div>
+                    <div>{{ shield.telemetry_current[0].meter.measurements[0].parameters.reactive_power_volt_amperes1[1].value }}</div>
+                  </div>
+                  <div>
+                    <div>B</div>
+                    <div>{{ shield.telemetry_current[0].meter.measurements[0].parameters.voltage_volts2[1].value }}</div>
+                    <div>{{ shield.telemetry_current[0].meter.measurements[0].parameters.current_amperes2[1].value }}</div>
+                    <div>{{ shield.telemetry_current[0].meter.measurements[0].parameters.active_power_watts2[1].value }}</div>
+                    <div>{{ shield.telemetry_current[0].meter.measurements[0].parameters.reactive_power_volt_amperes2[1].value }}</div>
+                  </div>
+                  <div>
+                    <div>C</div>
+                    <div>{{ shield.telemetry_current[0].meter.measurements[0].parameters.voltage_volts3[1].value }}</div>
+                    <div>{{ shield.telemetry_current[0].meter.measurements[0].parameters.current_amperes3[1].value }}</div>
+                    <div>{{ shield.telemetry_current[0].meter.measurements[0].parameters.active_power_watts3[1].value }}</div>
+                    <div>{{ shield.telemetry_current[0].meter.measurements[0].parameters.reactive_power_volt_amperes3[1].value }}</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </b-col>
         </b-row>

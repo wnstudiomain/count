@@ -344,8 +344,8 @@ vertical-align: middle;
 }
 .dashboard h1 {
     font-family: 'Montserrat-Bold', sans-serif;
-    font-size: 20px;
-    margin: 0;
+    font-size: 26px;
+    margin-bottom: 20px;
 }
 .dashboard .status-block {
     padding: 20px 25px;
@@ -400,11 +400,13 @@ vertical-align: middle;
 .shield-item > div {
     background-color: #fff;
     width: 100%;
-    padding: 25px;
-    margin-bottom: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 20px 0 rgb(0 0 0 / 5%);
+    border-radius: 5px;
 }
 .shield-item__wrapper h5 {
-    font-size: 14px;
+    font-size: 18px;
     font-family: 'Montserrat-Bold', sans-serif;
     margin-bottom: 0;
     line-height: 1.4;
@@ -431,10 +433,59 @@ vertical-align: middle;
     max-width: 18px;
     height: auto;
     margin-left: auto;
+    cursor: pointer;
 }
 .shield-item__detail {
     margin-top: 10px;
 }
 .shield-item__detail > span {
     color: #909399;
+}
+.shield-item__table {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    width: 100%;
+}
+.shield-item__table .table-header {
+    display: flex;
+    width: 100%;
+}
+.shield-item__table .table-body {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.shield-item__table .table-header > div:first-child {
+    padding: 10px 15px;
+    border-left: none;
+    flex-basis: 10%;
+}
+.shield-item__table .table-header > div {
+    text-align: center;
+    padding: 15px 10px;
+    flex-basis: 22.5%;
+    font-family: 'Montserrat-Bold', sans-serif;
+}
+.shield-item__table .table-body > div {
+    display: flex;
+}
+.shield-item__table .table-body > div > div {
+    padding: 15px 10px;
+    width: 100%;
+    text-align: center;
+    flex-basis: 22.5%;
+    color: #74777c;
+}
+.shield-item__table .table-body > div > div:first-child {
+    flex-basis: 10%;
+    font-family: 'Montserrat-Bold', sans-serif;
+    color: inherit;
+}
+.shield-item__table .table-body > div:last-child > div {
+    border-bottom: none;
+    background-color: #f5f6f8;
+}
+.shield-item__table .table-body > div:first-child > div {
+    background-color: #f5f6f8;
 }
