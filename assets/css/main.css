@@ -349,6 +349,7 @@ vertical-align: middle;
 }
 .dashboard .status-block {
     padding: 20px 25px;
+    width: 200px;
     background-color: #fff;
     box-shadow: 0 1px 20px 0 rgb(0 0 0 / 5%);
     margin-right: 25px;
@@ -395,4 +396,45 @@ vertical-align: middle;
     margin-bottom: 2px;
     display: block;
     font-family: 'Montserrat-Bold', sans-serif;
+}
+.shield-item > div {
+    background-color: #fff;
+    width: 100%;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+.shield-item__wrapper h5 {
+    font-size: 14px;
+    font-family: 'Montserrat-Bold', sans-serif;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+.shield-item__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.shield-item__title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.shield-item__status {
+    margin-left: 10px;
+}
+.shield-item__status > .online {
+    color: #50C878;
+}
+.shield-item__status > .offline {
+    color: #F56C6C;
+}
+.shield-item__image-signal {
+    max-width: 18px;
+    height: auto;
+    margin-left: auto;
+}
+.shield-item__detail {
+    margin-top: 10px;
+}
+.shield-item__detail > span {
+    color: #909399;
 }
