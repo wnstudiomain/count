@@ -348,13 +348,13 @@ vertical-align: middle;
     margin-bottom: 20px;
 }
 .dashboard .status-block {
-    padding: 20px 25px;
+    padding: 25px 25px;
     width: 200px;
     background-color: #fff;
     box-shadow: 0 1px 20px 0 rgb(0 0 0 / 5%);
     margin-right: 25px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     border-radius: 5px;
 }
 .status-block .status-img {
