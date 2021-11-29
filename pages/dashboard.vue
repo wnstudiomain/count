@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="container-fluid dashboard">
+    <div v-if="loading" class="container-fluid dashboard">
       <h1>Мониторинг</h1>
       <div class="d-flex align-items-center">
         <div class="status-block online d-flex">
@@ -27,7 +27,7 @@
       <div class="shield-group">
         <b-row>
           <b-col
-            v-for="shield in elist"
+            v-for="shield in list"
             :key="shield.id"
             xl="4"
             lg="4"
@@ -108,7 +108,9 @@ export default {
   layout: 'content',
   data () {
     return {
-      error: null
+      error: null,
+      list: [],
+      loading: false
     }
   },
   computed: {
@@ -117,8 +119,10 @@ export default {
     })
   // Другие вычисляемые свойства
   },
-  mounted () {
-    this.$store.dispatch('elist/fetchSheilds')
+  async mounted () {
+    await this.$store.dispatch('elist/fetchSheilds')
+    this.list = await this.elist
+    this.loading = true
   }
 }
 </script>

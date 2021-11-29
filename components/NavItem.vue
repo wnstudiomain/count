@@ -13,17 +13,6 @@
       <i v-if="link.icon" :class="link.icon" /> {{ link.name }}
     </span>
     <slot />
-    <collapse-transition>
-      <div
-        v-if="$slots.default || isMenu"
-        v-show="!collapsed"
-        class="collapse show"
-      >
-        <ul class="nav nav-sm flex-column">
-          <slot />
-        </ul>
-      </div>
-    </collapse-transition>
   </nuxt-link>
 </template>
 <script>
@@ -91,14 +80,6 @@ export default {
     }
     if (this.isActive && this.isMenu) {
       this.collapsed = false
-    }
-  },
-  destroyed () {
-    if (this.$el && this.$el.parentNode) {
-      this.$el.parentNode.removeChild(this.$el)
-    }
-    if (this.removeLink) {
-      this.removeLink(this)
     }
   },
   methods: {
