@@ -35,7 +35,17 @@
           >
             <div class="shield-item__wrapper">
               <div class="shield-item__title">
-                <h5>{{ shield.name }}</h5>
+                <nav-item
+                  :link="{
+                    name: shield.name,
+                    multiply: true,
+                    params: {
+                      url: 'shield-path',
+                      id: shield.id,
+                      path: shield.name,
+                    }
+                  }"
+                />
                 <div class="shield-item__status">
                   <span v-if="shield.is_enabled == true" class="online">Online</span>
                   <span v-else class="offline">Offline</span>
@@ -45,11 +55,14 @@
                 </el-tooltip>
               </div>
               <div class="shield-item__detail">
-                <span>Счетчик № {{ shield.meter_serial_number }}</span>
+                <div class="d-flex justify-content-between">
+                  <span>Счетчик № {{ shield.meter_serial_number }}</span>
+                  <span class="kvt">{{ shield.telemetry_current[0].meter.measurements[0].parameters.total_active_energy_for_whole_period_kilowatt_hours[1].value }} кВт*ч</span>
+                </div>
               </div>
               <div class="shield-item__table">
                 <div class="table-header">
-                  <div> </div>
+                  <div />
                   <div>U(В)</div>
                   <div>I(А)</div>
                   <div>P(Вт)</div>
@@ -83,26 +96,6 @@
           </b-col>
         </b-row>
       </div>
-      <!-- <ul class="list-group">
-        <li
-          v-for="shield in elist"
-          :key="shield.id"
-          class="list-group-item"
-        >
-          <nav-item
-            :link="{
-              name: 'Шкаф ' + shield.name,
-              multiply: true,
-              icon: 'el-icon-s-grid',
-              params: {
-                url: 'shield-path',
-                id: shield.id,
-                path: shield.name,
-              }
-            }"
-          />
-        </li>
-      </ul> -->
     </div>
   </div>
 </template>
@@ -115,7 +108,6 @@ export default {
   layout: 'content',
   data () {
     return {
-      shields: [],
       error: null
     }
   },
