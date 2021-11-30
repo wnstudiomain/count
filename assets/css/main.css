@@ -3,7 +3,6 @@
     font-style: normal;
     font-weight: 400;
     src: url('../fonts/Montserrat-Regular.ttf') format('truetype');
-    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
   }
   @font-face {
     font-family: 'Montserrat-Bold';
@@ -304,7 +303,7 @@ vertical-align: middle;
     text-decoration: none;
 }
 .shield-wrapper {
-    margin-left: 340px;
+    margin-left: 350px;
     margin-top: 30px;
 }
 .navbar-shields .list-group-item a.active-link {
@@ -328,7 +327,7 @@ vertical-align: middle;
 
 .navbar-shields::-webkit-scrollbar-thumb {
     background-color: rgba(144,147,153,.3);
-}
+}shield-header
 .navbar-shields ul {
     width: calc(320px - 0.3em);
 }
@@ -342,20 +341,34 @@ vertical-align: middle;
 .dashboard {
     padding: 35px;
 }
-.dashboard h1 {
+.main h1 {
     font-family: 'Montserrat-Bold', sans-serif;
     font-size: 26px;
     margin-bottom: 20px;
 }
-.dashboard .status-block {
+.status-block {
     padding: 25px 25px;
-    width: 200px;
     background-color: #fff;
     box-shadow: 0 1px 20px 0 rgb(0 0 0 / 5%);
     margin-right: 25px;
     margin-top: 20px;
     margin-bottom: 30px;
     border-radius: 5px;
+}
+.dashboard .status-block  {
+    width: 200px;
+}
+.shield-wrapper .status-block  {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+.shield-wrapper .status-detail {
+    text-align: right;
+}
+.shield-wrapper .status-detail > span {
+    font-size: 32px;
+    line-height: 32px;
 }
 .status-block .status-img {
     position: relative;
@@ -389,6 +402,9 @@ vertical-align: middle;
 }
 .status-detail {
     margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .status-detail > span {
     font-size: 38px;
@@ -512,4 +528,18 @@ vertical-align: middle;
     border-radius: 5px;
     font-size: 12px;
     font-family: 'Montserrat-Bold', sans-serif;
+}
+.shield-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.shield-header h1 {
+    margin-bottom: 0;
+}
+.shield-header .shield-item__status {
+    margin-left: 20px;
+}
+.update-header {
+
 }
