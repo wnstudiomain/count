@@ -3,16 +3,24 @@
     <LeftNavbarShields :shields="mapElist" />
     <div v-if="mapDataLoaded" class="shield-wrapper">
       <div class="shield-header">
-        <h1>Шкаф управления {{ shield.name }}</h1>
-        <div class="shield-item__status">
-          <span v-if="shield.is_enabled == true" class="online">Online</span>
-          <span v-else class="offline">Offline</span>
+        <div class="d-flex align-items-center">
+          <h1>Шкаф управления {{ shield.name }}</h1>
+        </div>
+        <div class="control-panel">
+          <div class="shield-item__status">
+            <span v-if="shield.is_enabled == true" class="online">Online</span>
+            <span v-else class="offline">Offline</span>
+          </div>
+          <el-switch v-model="enable" active-color="#123a73fc" />
         </div>
       </div>
       <div class="update-header">
-        Последнее обновление {{ shield.updated_at }}
+        <span>Последнее обновление {{ shield.updated_at }}</span>
+        <a class="refresh-button" href="">
+          <i class="el-icon-refresh" />
+        </a>
       </div>
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center mt-3">
         <div class="status-block online d-flex">
           <div class="status-img">
             <div>
@@ -34,9 +42,6 @@
           </div>
         </div>
       </div>
-      <p>ID: {{ shield.id }}</p>
-      <p>NAME: {{ shield.name }}</p>
-      <p>DESCRIPTION: {{ $route.params.path }}</p>
     </div>
   </div>
 </template>
@@ -53,7 +58,8 @@ export default {
   data () {
     return {
       mapDataLoaded: false,
-      shield: []
+      shield: [],
+      enable: null
     }
   },
   computed: {
@@ -64,7 +70,9 @@ export default {
   },
   async mounted () {
     await this.fetchEnum(this.$route.params.id)
-    this.shield = await this.mapShield
+    const shield = await this.mapShield
+    this.shield = shield
+    this.enable = shield.is_enabled
     this.mapDataLoaded = true
   },
   methods: {

@@ -1,5 +1,5 @@
 import { ValidationProvider, ValidationObserver } from 'vee-validate'
-import { Input, Tooltip, Popover, Checkbox, Button, Link, Avatar, Table } from 'element-ui'
+import { Input, Tooltip, Popover, Checkbox, Button, Link, Avatar, Table, Switch } from 'element-ui'
 import Vue from 'vue'
 import BaseInput from '@/components/Inputs/BaseInput.vue'
 import NavItem from '@/components/NavItem.vue'
@@ -21,3 +21,4 @@ Vue.use(Button)
 Vue.use(Link)
 Vue.use(Avatar)
 Vue.use(Table)
+Vue.use(Switch)
