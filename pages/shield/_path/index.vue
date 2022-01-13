@@ -1,14 +1,14 @@
 <template>
   <div class="main container-fluid d-flex">
     <LeftNavbarShields :shields="mapElist" />
-    <div v-if="mapDataLoaded" class="shield-wrapper">
+    <div v-if="loading" class="shield-wrapper">
       <div class="shield-header">
         <div class="d-flex align-items-center">
           <h1>Шкаф управления {{ shield.name }}</h1>
         </div>
         <div class="control-panel">
           <div class="shield-item__status">
-            <span v-if="shield.is_enabled == true" class="online">Online</span>
+            <span v-if="enable == true" class="online">Online</span>
             <span v-else class="offline">Offline</span>
           </div>
           <el-switch v-model="enable" active-color="#123a73fc" />
@@ -57,23 +57,26 @@ export default {
   layout: 'content',
   data () {
     return {
-      mapDataLoaded: false,
+      loading: false,
       shield: [],
       enable: null
     }
   },
   computed: {
     ...mapGetters({
-      mapElist: 'elist/elist',
-      mapShield: 'enum/enum'
+      mapElist: 'elist/getElist',
+      mapShield: 'enum/getEnum'
     })
   },
   async mounted () {
-    await this.fetchEnum(this.$route.params.id)
-    const shield = await this.mapShield
-    this.shield = shield
-    this.enable = shield.is_enabled
-    this.mapDataLoaded = true
+    const enumID = this.$route.params.id ? this.$route.params.id : localStorage.getItem('enum_id')
+    await this.fetchEnum(enumID)
+    if (this.mapElist === null) {
+      await this.$store.dispatch('elist/fetchSheilds')
+    }
+    this.shield = await this.mapShield
+    this.enable = this.shield.is_enabled
+    this.loading = true
   },
   methods: {
     ...mapActions({

@@ -115,9 +115,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      elist: 'elist/elist'
+      elist: 'elist/getElist'
     })
-  // Другие вычисляемые свойства
   },
   async mounted () {
     await this.$store.dispatch('elist/fetchSheilds')

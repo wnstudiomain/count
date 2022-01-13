@@ -4,7 +4,7 @@
     :to="link.multiply ? { name: link.params.url, params: {id: link.params.id, path: link.params.path, title: link.params.path}} : link.path"
     class="nav-item"
     :class="{ active: isActive }"
-    @click.prevent="collapseMenu"
+    @click.native="collapseMenu"
   >
     <span v-if="link.onlyIcon">
       <i :class="link.icon" />
@@ -97,6 +97,10 @@ export default {
       return matches.join('')
     },
     collapseMenu () {
+      console.log(this.link)
+      if ('params' in this.link && 'id' in this.link.params) {
+        localStorage.setItem('enum_id', this.link.params.id)
+      }
       this.collapsed = !this.collapsed
     },
     collapseSubMenu (link) {

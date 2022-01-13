@@ -1,15 +1,15 @@
 
 export const state = () => ({
-  list: null
+  enumList: null
 })
 export const mutations = {
   setElist (state, payload) {
-    state.list = payload
+    state.enumList = payload
   }
 }
 export const getters = {
-  elist (state) {
-    return state.list
+  getElist (state) {
+    return state.enumList
   }
 }
 export const actions = {
