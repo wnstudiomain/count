@@ -17,9 +17,10 @@
             name: 'Шкафы управления',
             onlyIcon: true,
             multiply: true,
+            mainCategory: true,
             icon: 'el-icon-cpu',
             params: {
-              url: 'shield-path',
+              url: 'shields-path',
               id: '1',
               path: 'TP-01',
             }

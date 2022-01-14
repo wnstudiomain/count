@@ -305,7 +305,7 @@ vertical-align: middle;
 }
 .shield-wrapper {
     margin-left: 350px;
-    margin-top: 40px;
+    margin-top: 30px;
     width: 100%;
     padding-right: 20px;
 }
@@ -333,6 +333,9 @@ vertical-align: middle;
 }shield-header
 .navbar-shields ul {
     width: calc(320px - 0.3em);
+}
+.shield-list {
+    position: relative;
 }
 .shield-list li > span {
     display: block;
@@ -450,9 +453,11 @@ vertical-align: middle;
 }
 .shield-item__status > .online {
     color: #50C878;
+    font-family: 'Montserrat-Bold', sans-serif;
 }
 .shield-item__status > .offline {
     color: #F56C6C;
+    font-family: 'Montserrat-Bold', sans-serif;
 }
 .shield-item__image-signal {
     max-width: 20px;
@@ -570,7 +575,4 @@ vertical-align: middle;
 .control-panel {
     display: flex;
     align-items: center;
-}
- .shield-item__status > .offline {
-    font-family: 'Montserrat-Bold', sans-serif;
 }

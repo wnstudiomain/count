@@ -10,7 +10,7 @@
             </div>
           </div>
           <div class="status-detail">
-            <span>50</span> в сети
+            <span>{{ online }}</span> в сети
           </div>
         </div>
         <div class="status-block offline d-flex">
@@ -20,7 +20,7 @@
             </div>
           </div>
           <div class="status-detail">
-            <span>0</span> не в сети
+            <span>{{ offline }}</span> не в сети
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@
                     name: shield.name,
                     multiply: true,
                     params: {
-                      url: 'shield-path',
+                      url: 'shields-path',
                       id: shield.id,
                       path: shield.name,
                     }
@@ -110,7 +110,10 @@ export default {
     return {
       error: null,
       list: [],
-      loading: false
+      loading: false,
+      timer: '',
+      online: 0,
+      offline: 0
     }
   },
   computed: {
@@ -118,10 +121,38 @@ export default {
       elist: 'elist/getElist'
     })
   },
-  async mounted () {
-    await this.$store.dispatch('elist/fetchSheilds')
-    this.list = await this.elist
-    this.loading = true
+  mounted () {
+    // await this.$store.dispatch('elist/fetchSheilds')
+    // setInterval(this.fetchSheilds, 1000)
+    // this.list = await this.elist
+    this.fetchSheilds()
+    this.timer = setInterval(this.fetchSheilds, 5000)
+  },
+  beforeDestroy () {
+    this.cancelInterval()
+  },
+  methods: {
+    async fetchSheilds () {
+      await this.$store.dispatch('elist/fetchSheilds')
+      this.list = await this.elist
+      this.loading = true
+      this.calcOnlineEnum(this.list)
+    },
+    cancelInterval () {
+      clearInterval(this.timer)
+    },
+    calcOnlineEnum (shields) {
+      this.offline = 0
+      this.online = 0
+      for (const key in shields) {
+        if (shields[key].is_enabled === 'false') {
+          this.offline++
+        } else {
+          this.online++
+        }
+      }
+    }
   }
+
 }
 </script>

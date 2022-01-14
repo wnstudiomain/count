@@ -1,9 +1,10 @@
 <template>
   <nuxt-link
     :is="baseComponent"
+    :id="link.multiply ? link.params.path : false"
     :to="link.multiply ? { name: link.params.url, params: {id: link.params.id, path: link.params.path, title: link.params.path}} : link.path"
     class="nav-item"
-    :class="{ active: isActive }"
+    :class="{ 'active-link': isActive }"
     @click.native="collapseMenu"
   >
     <span v-if="link.onlyIcon">
@@ -39,7 +40,8 @@ export default {
           multiply: false,
           onlyIcon: false,
           params: Object,
-          children: []
+          children: [],
+          mainCategory: false
         }
       },
       description:
@@ -70,6 +72,11 @@ export default {
         if (matchingRoute !== undefined) {
           return true
         }
+        if (this.link.params) {
+          if (this.link.mainCategory === true && this.link.params.url === this.$route.name) {
+            return true
+          }
+        }
       }
       return false
     }
@@ -97,9 +104,9 @@ export default {
       return matches.join('')
     },
     collapseMenu () {
-      console.log(this.link)
       if ('params' in this.link && 'id' in this.link.params) {
         localStorage.setItem('enum_id', this.link.params.id)
+        localStorage.setItem('enum_path', this.link.params.path)
       }
       this.collapsed = !this.collapsed
     },

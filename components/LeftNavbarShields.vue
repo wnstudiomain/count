@@ -10,9 +10,10 @@
           :link="{
             name: 'Шкаф ' + shield.name,
             multiply: true,
+            class: 'class',
             icon: 'el-icon-s-grid',
             params: {
-              url: 'shield-path',
+              url: 'shields-path',
               id: shield.id,
               path: shield.name,
             }
@@ -32,7 +33,7 @@ export default {
   },
   data () {
     return {
-      error: null,
+      error: 'null',
       title: ''
     }
   }
