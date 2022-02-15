@@ -385,6 +385,7 @@ vertical-align: middle;
 .shield-wrapper .enum-number {
     margin-top: 40px;
     text-transform: uppercase;
+
     font-family: 'Montserrat-Bold', sans-serif;
 }
 .shield-wrapper .status-detail {
@@ -633,4 +634,7 @@ vertical-align: middle;
  }
  .shield-wrapper .el-slider__marks-text {
      font-size: 13px;
+ }
+ .shield-wrapper .el-slider__marks-text {
+    color: #74777c;
  }
