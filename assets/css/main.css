@@ -251,7 +251,7 @@ vertical-align: middle;
     padding-left: 70px;
     position: relative;
     width: 100%;
-
+    padding-bottom: 35px;
 }
 .main {
     min-height: 100vh;
@@ -280,6 +280,7 @@ vertical-align: middle;
     min-width: 320px;
     position: fixed;
     top: 70px;
+    padding-bottom: 0;
     bottom: 0;
     box-shadow: 0 1px 20px 0 rgb(0 0 0 / 5%);
     overflow:scroll;
@@ -357,8 +358,7 @@ vertical-align: middle;
     background-color: #fff;
     box-shadow: 0 1px 20px 0 rgb(0 0 0 / 5%);
     margin-right: 25px;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     border-radius: 5px;
 }
 .dashboard .status-block  {
@@ -369,12 +369,40 @@ vertical-align: middle;
     display: flex;
     justify-content: space-between;
 }
+.shield-wrapper .address-block {
+    width: auto;
+    display: inline-flex;
+    margin-top: 15px;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 0;
+}
+.shield-wrapper .address-block .img img {
+    max-height: 22px;
+    width: auto;
+    margin-right: 6px;
+}
+.shield-wrapper .enum-number {
+    margin-top: 40px;
+    text-transform: uppercase;
+    font-family: 'Montserrat-Bold', sans-serif;
+}
 .shield-wrapper .status-detail {
     text-align: right;
 }
 .shield-wrapper .status-detail > span {
     font-size: 32px;
     line-height: 32px;
+}
+.shield-wrapper .shield-table__wrapper {
+    background-color: #fff;
+    padding: 5px 20px 20px;
+    max-width: 1080px;
+    box-shadow: 0 1px 20px 0 rgb(0 0 0 / 5%);
+    border-radius: 5px;
+}
+.shield-wrapper .shield-table__wrapper .shield-item__table {
+    margin: 0;
 }
 .status-block .status-img {
     position: relative;
@@ -576,3 +604,33 @@ vertical-align: middle;
     display: flex;
     align-items: center;
 }
+.shield-wrapper .el-slider__runway.disabled .el-slider__button:hover, .shield-wrapper .el-slider__runway.disabled .el-slider__button-wrapper:hover {
+    cursor: auto;
+}
+.shield-wrapper .el-slider__runway.disabled .el-slider__bar {
+    background-color: #50C878;
+}
+.shield-wrapper .el-slider__runway.disabled .el-slider__button {
+    border-color: #50C878;
+}
+.shield-wrapper .el-slider__button {
+    width: 18px;
+    height: 18px;
+}
+.schedule-block {
+    margin-top: 50px;
+    max-width: 1080px;
+}
+.schedule-block h3 {
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: 'Montserrat-Bold', sans-serif;
+    margin-bottom: 15px;
+ }
+ .schedule-block > div {
+     margin-left: 10px;
+ }
+ .shield-wrapper .el-slider__marks-text {
+     font-size: 13px;
+ }
