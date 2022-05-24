@@ -29,7 +29,7 @@
           <b-col
             v-for="shield in list"
             :key="shield.id"
-            xl="4"
+            xl="3"
             lg="4"
             class="d-flex align-items-center shield-item"
           >

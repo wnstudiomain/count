@@ -638,3 +638,14 @@ vertical-align: middle;
  .shield-wrapper .el-slider__marks-text {
     color: #74777c;
  }
+ @media screen and (max-width: 1508px) {
+    .shield-item > div {
+        padding: 20px;
+    }
+    .shield-item__table .table-body > div > div {
+        padding: 10px 5px;
+    }
+    .shield-item__table .table-header > div {
+        padding: 10px 5px;
+    }
+}
