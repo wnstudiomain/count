@@ -1,5 +1,5 @@
 <template>
-  <div class="left-navbar">
+  <div class="left-navbar d-none d-sm-block">
     <ul class="list-group">
       <li class="list-group-item">
         <nav-item

@@ -119,21 +119,17 @@ export default {
       shield: [],
       enable: null,
       enumID: null,
+      startMin: 0,
+      endMin: 0,
       value: [30, 60],
       marks: {
-        0: '12:00',
-        2: '14:00',
-        4: '16:00',
-        6: '18:00',
-        8: '20:00',
-        10: '22:00',
-        12: '00:00',
-        14: '02:00',
-        16: '04:00',
-        18: '06:00',
-        20: '08:00',
-        22: '10:00',
-        24: '12:00'
+        0: '00:00',
+        4: '04:00',
+        8: '08:00',
+        12: '12:00',
+        16: '16:00',
+        20: '20:00',
+        24: '00:00'
       }
     }
   },
@@ -168,15 +164,22 @@ export default {
     getValueFromHour (data) {
       const start = data.start.split(':')
       const end = data.end.split(':')
-      const startMin = start[0] * 60 + parseInt(start[1])
-      const endMin = end[0] * 60 + parseInt(end[1])
-      const startCalc = this.calcValueForSchedule(startMin)
-      const endCalc = this.calcValueForSchedule(endMin)
-      console.log(startCalc, endCalc)
-      this.value = [startCalc, endCalc]
+      this.startMin = start[0] * 60 + parseInt(start[1])
+      this.endMin = end[0] * 60 + parseInt(end[1])
+      let startCalc, endCalc
+      if (this.startMin > this.endMin) {
+        startCalc = this.calcValueForSchedule(this.startMin, 720)
+        endCalc = this.calcValueForSchedule(this.endMin, 720)
+        this.changeTimeInScale()
+        this.value = [startCalc, endCalc]
+      } else {
+        startCalc = this.calcValueForSchedule(this.startMin, 0)
+        endCalc = this.calcValueForSchedule(this.endMin, 0)
+        this.value = [startCalc, endCalc]
+      }
     },
-    calcValueForSchedule (val) {
-      let newVal = val + 720
+    calcValueForSchedule (val, offset) {
+      let newVal = val + offset
       if ((val % 60) === 0) {
         if (newVal > 1440) {
           newVal = (newVal - 1440) / 60
@@ -198,9 +201,25 @@ export default {
         return newVal
       }
     },
+    changeTimeInScale () {
+      this.marks = {
+        0: '12:00',
+        4: '16:00',
+        8: '20:00',
+        12: '00:00',
+        16: '04:00',
+        20: '08:00',
+        24: '12:00'
+      }
+    },
     formatTooltip (val) {
-      let newVal = val * 60 + 720
-      console.log(newVal)
+      console.log(this.value)
+      let newVal
+      if (this.startMin > this.endMin) {
+        newVal = val * 60 + 720
+      } else {
+        newVal = val * 60
+      }
       if ((newVal % 60) === 0) {
         if (newVal > 1440) {
           newVal = (newVal - 1440) / 60
@@ -210,7 +229,6 @@ export default {
         return newVal + ':00'
       } else {
         const remainder = newVal % 60
-        console.log(remainder)
         if (newVal > 1440) {
           newVal = (newVal - remainder - 1440) / 60
         } else {
