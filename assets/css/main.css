@@ -649,3 +649,81 @@ vertical-align: middle;
         padding: 10px 5px;
     }
 }
+@media screen and (max-width: 767px) {
+    .main {
+        padding-left: 0;
+        padding-top: 64px;
+        padding-right: 0;
+    }
+    .dashboard {
+        padding: 20px;
+    }
+    .header-nav .login-info {
+        display: none !important;
+    }
+    .header-nav .logo {
+        margin-left: 0px;
+        height: 22px;
+    }
+    .header-nav {
+        padding: 15px 5px;
+    }
+    .logout-block {
+        margin-left: 12px !important;
+        margin-top: 2px;
+    }
+    .header-nav .el-avatar {
+        height: 30px !important;
+        width: 30px !important;
+        line-height: 30px !important;
+    }
+    .dashboard .status-block, .shield-wrapper .status-block {
+        padding: 15px 15px;
+        width: 100%;
+        margin-right: 20px;
+        margin-bottom: 15px;
+    }
+    .dashboard .status-detail > span, .shield-wrapper .status-detail > span {
+        display: inline-block;
+        font-size: 22px;
+        line-height: 22px;
+        margin: 0;
+        margin-right: 6px;
+    }
+    .dashboard .status-detail, .shield-wrapper .status-detail {
+        margin-left: 10px;
+    }
+    .status-block .status-img {
+        width: 42px;
+        height: 42px;
+    }
+    .status-block .status-img > div {
+        width: 23px;
+        height: 23px;
+    }
+    .status-block .status-img img {
+        max-width: 16px;
+    }
+    .dashboard > div .status-block:last-child, .shield-wrapper > div .status-block:last-child {
+        margin-right: 0;
+    }
+    .navbar-shields {
+        display: none;
+    }
+    .shield-wrapper {
+        margin-left: 0;
+        padding-left: 20px;
+    }
+    .main h1 {
+        font-size: 20px;
+    }
+    .shield-header h1 {
+        font-size: 18px;
+    }
+    .shield-header .shield-item__status {
+        margin-right: 10px;
+    }
+    .shield-wrapper .enum-number, .schedule-block {
+        margin-top: 25px;
+    }
+}

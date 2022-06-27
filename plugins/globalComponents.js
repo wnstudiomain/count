@@ -2,6 +2,9 @@ import createPersistedState from 'vuex-persistedstate'
 import { ValidationProvider, ValidationObserver } from 'vee-validate'
 import { Input, Tooltip, Popover, Checkbox, Button, Link, Avatar, Table, Switch, Slider } from 'element-ui'
 import Vue from 'vue'
+import VueLayers from 'vuelayers'
+import 'vuelayers/dist/vuelayers.css' // needs css-loader
+import { loadingBBox } from 'vuelayers/dist/ol-ext'
 import BaseInput from '@/components/Inputs/BaseInput.vue'
 import NavItem from '@/components/NavItem.vue'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -31,3 +34,11 @@ Vue.use(Avatar)
 Vue.use(Table)
 Vue.use(Slider)
 Vue.use(Switch)
+Vue.use(VueLayers, {
+  dataProjection: 'EPSG:4326'
+})
+Vue.use(loadingBBox)
+
+Vue.prototype.$loadingBBox = () => {
+  return loadingBBox
+}

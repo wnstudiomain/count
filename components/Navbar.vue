@@ -14,8 +14,8 @@
               </div>
               <el-avatar :size="40" :src="circleUrl" />
             </div>
-            <div class="ml-5 d-flex align-items-center">
-              <span class="mr-2 f-bold">Выход</span>
+            <div class="ml-5 d-flex align-items-center logout-block">
+              <span class="d-none d-sm-block mr-2 f-bold">Выход</span>
               <el-button type="text" class="sign_out" icon="el-icon-switch-button" @click="logout" />
             </div>
           </div>
